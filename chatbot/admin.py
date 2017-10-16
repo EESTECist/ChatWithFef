@@ -1,3 +1,10 @@
 from django.contrib import admin
+from chatbot.models import Message
 
-# Register your models here.
+
+@admin.register(Message)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = [
+        "timestamp",
+        "message"
+    ]

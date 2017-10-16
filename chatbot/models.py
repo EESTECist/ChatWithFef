@@ -1,5 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
 class Message(models.Model):
-    name = models.CharField(max_length=50)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+    is_bot = models.BooleanField(default=0)
+    #user = models.ForeignKey(User, blank=False, null=False)
+
+    def __str__(self):
+        return "{} : (is bot? {}) : {}".format(self.message, self.is_bot, self.timestamp.date())
