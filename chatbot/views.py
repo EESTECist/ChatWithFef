@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+import cleverbot
 
 # Create your views here.
 def home(request):
-    return HttpResponse("<h1>Hello World!</h1>")
+    cb = cleverbot.Cleverbot('CC4zfUgbrPndTHT3tLdz3q9-2DA')
+    reply = cb.say('What is the meaning of life?')
+    return render(request, 'index.html', context={'name': reply})
